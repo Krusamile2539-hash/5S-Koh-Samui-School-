@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" font-family="Kanit, sans-serif">
+  <circle cx="100" cy="100" r="98" fill="white" stroke="#0077C8" stroke-width="4"/>
+  <text x="100" y="70" text-anchor="middle" font-size="60" font-weight="bold" fill="#0077C8">5S</text>
+  <g transform="translate(0, 20)">
+      <path d="M 30 95 C 60 80, 100 80, 130 95 S 200 110, 170 95" stroke="#58B9F5" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M 40 105 C 70 90, 110 90, 140 105 S 210 120, 180 105" stroke="#0077C8" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="100" y="145" text-anchor="middle" font-size="24" font-weight="bold" fill="#0077C8">
+    KOH SAMUI
+  </text>
+  <text x="100" y="175" text-anchor="middle" font-size="24" font-weight="bold" fill="#0077C8">
+    SCHOOL
+  </text>
+</svg>

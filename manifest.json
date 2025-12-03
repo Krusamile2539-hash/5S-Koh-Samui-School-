@@ -1,0 +1,22 @@
+{
+  "short_name": "5S Check-in",
+  "name": "5S Check-in โรงเรียนเกาะสมุย",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/128/10691/10691802.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/10691/10691802.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0077C8",
+  "background_color": "#ffffff"
+}
