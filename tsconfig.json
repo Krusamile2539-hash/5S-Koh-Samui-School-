@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "target": "ES2022",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
@@ -9,7 +13,6 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "skipLibCheck": true,
     "types": [
       "node"
     ],
