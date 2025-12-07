@@ -1,12 +1,7 @@
 import React from 'react';
 
-// The logo image is embedded as a base64 data URL to ensure it's always available
-// without an extra network request and to match the user's new design request.
-const logoBase64 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZm9udC1mYW1pbHk9Ikthbml0LCBzYW5zLXNlcmlmIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijk4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMDA3N0M4IiBzdHJva2Utd2lkdGg9IjQiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjYwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwNzdDOCI+NVM8L3RleHQ+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgMjApIj4KICAgICAgPHBhdGggZD0iTSAzMCA5NSBDIDYwIDgwLCAxMDAgODAsIDEzMCA5NSBTIDIwMCAxMTAsIDE3MCA5NSIgc3Ryb2tlPSIjNThCOUY1IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgICA8cGF0aCBkPSJNIDQwIDEwNSBDIDcwIDkwLCAxMTAgOTAsIDE0MCAxMDUgUyAyMTAgMTIwLCAxODAgMTA1IiBzdHJva2U9IiMwMDc3QzgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9nPgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwNzdDOCI+CiAgICBLT0ggU0FNVUkKICA8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDA3N0M4Ij4KICAgIFNDSE9PTAogIDwvdGV4dD4KPC9zdmc+';
-
 const AppLogo = (props: { className?: string }) => (
-  <img src={logoBase64} alt="5S Koh Samui School Logo" {...props} />
+  <img src="/logo.png" alt="5S Koh Samui School Logo" {...props} />
 );
 
-// Fix: Add default export to make the component available for import in other files.
 export default AppLogo;
