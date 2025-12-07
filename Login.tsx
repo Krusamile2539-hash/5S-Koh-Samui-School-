@@ -23,6 +23,32 @@ const BackgroundWallpaper = () => {
                 0% { transform: translateX(-50%); }
                 100% { transform: translateX(0); }
             }
+            
+            /* New Animations */
+            @keyframes text-shimmer {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 200% 50%; }
+            }
+            @keyframes slide-up-fade {
+                0% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes float-logo {
+                0%, 100% { transform: translateY(0) rotate(0deg); }
+                50% { transform: translateY(-8px) rotate(2deg); }
+            }
+            @keyframes underline-expand {
+                0% { width: 0%; opacity: 0; }
+                100% { width: 50%; opacity: 1; }
+            }
+            .title-animate {
+                background-size: 200% auto;
+                animation: slide-up-fade 0.8s ease-out forwards, text-shimmer 3s linear infinite;
+            }
+            .fade-in-delayed {
+                animation: slide-up-fade 0.8s ease-out forwards;
+                opacity: 0;
+            }
             `}
         </style>
         {/* Container is rotated and scaled up to cover the corners */}
@@ -95,38 +121,60 @@ const Login: React.FC = () => {
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-brand-blue to-brand-blue-light p-4 overflow-hidden">
       <BackgroundWallpaper />
-      <div className="relative z-10 w-full max-w-sm mx-auto bg-white rounded-2xl shadow-2xl p-8 text-center">
-        <div className="mb-6">
-          <AppLogo className="w-32 h-32 mx-auto" />
-        </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">5ส Check-in</h1>
-        <p className="text-gray-500 mb-8">โรงเรียนเกาะสมุย</p>
+      <div className="relative z-10 w-full max-w-sm mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 text-center border border-white/50">
         
-        <form onSubmit={handleLogin}>
+        {/* Animated Logo */}
+        <div className="mb-6" style={{ animation: 'float-logo 5s ease-in-out infinite' }}>
+          <AppLogo className="w-32 h-32 mx-auto drop-shadow-lg" />
+        </div>
+        
+        {/* Animated Title Section */}
+        <div className="mb-8">
+            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-blue via-blue-400 to-brand-blue title-animate mb-2" style={{ animationDelay: '0.1s' }}>
+                5ส Check-in
+            </h1>
+            
+            {/* Expanding Underline */}
+            <div className="h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent mx-auto rounded-full mb-3" style={{ animation: 'underline-expand 0.8s ease-out forwards 0.5s', width: '0%', opacity: 0 }}></div>
+            
+            <p className="text-gray-500 font-medium text-lg fade-in-delayed" style={{ animationDelay: '0.3s' }}>
+                โรงเรียนเกาะสมุย
+            </p>
+        </div>
+        
+        <form onSubmit={handleLogin} className="fade-in-delayed" style={{ animationDelay: '0.5s' }}>
           <div className="space-y-4">
             <input
               type="text"
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
               placeholder="กรุณาใส่รหัสครูผู้ตรวจ"
-              className="w-full bg-gray-100 border-2 border-gray-200 rounded-lg p-3 text-center text-gray-700 focus:outline-none focus:border-brand-blue"
+              className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-center text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all shadow-inner"
               aria-label="รหัสครูผู้ตรวจ"
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="text-red-500 text-sm animate-pulse">{error}</p>}
             <button
               type="submit"
               disabled={isLoading || !code}
-              className="w-full bg-brand-blue text-white font-bold py-3 rounded-lg hover:bg-brand-blue-light transition-transform transform hover:scale-105 shadow-md disabled:bg-gray-400 disabled:scale-100"
+              className="w-full bg-brand-blue text-white font-bold py-3 rounded-lg hover:bg-brand-blue-light transition-all transform hover:scale-[1.02] active:scale-95 shadow-md disabled:bg-gray-400 disabled:scale-100"
             >
-              {isLoading ? 'กำลังตรวจสอบ...' : 'ลงชื่อเข้าใช้'}
+              {isLoading ? (
+                  <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      กำลังตรวจสอบ...
+                  </span>
+              ) : 'ลงชื่อเข้าใช้'}
             </button>
           </div>
         </form>
         
-        <div className="mt-8 pt-4 border-t border-gray-100">
+        <div className="mt-8 pt-4 border-t border-gray-100 fade-in-delayed" style={{ animationDelay: '0.7s' }}>
             <p className="text-xs text-gray-400">Version {APP_VERSION}</p>
             <p className="text-xs text-gray-400 mt-1">ผู้พัฒนา: คุณครูภานุวัฒน์ ทองจันทร์</p>
-            <button onClick={handleReset} className="mt-2 text-xs text-brand-blue/70 underline hover:text-brand-blue">
+            <button onClick={handleReset} className="mt-2 text-xs text-brand-blue/70 underline hover:text-brand-blue transition-colors">
                 หากพบปัญหา หรือแอปไม่อัปเดต กดที่นี่
             </button>
         </div>

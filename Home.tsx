@@ -409,6 +409,28 @@ const BackgroundWallpaper = () => {
                   0% { transform: translateX(-50%); }
                   100% { transform: translateX(0); }
               }
+              
+              /* New Animations for Title */
+              @keyframes text-shimmer {
+                  0% { background-position: 0% 50%; }
+                  100% { background-position: 200% 50%; }
+              }
+              @keyframes slide-up-fade {
+                  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+                  100% { opacity: 1; transform: translateY(0) scale(1); }
+              }
+              @keyframes float-logo {
+                  0%, 100% { transform: translateY(0) rotate(0deg); }
+                  50% { transform: translateY(-10px) rotate(1deg); }
+              }
+              @keyframes underline-expand {
+                  0% { width: 0%; opacity: 0; }
+                  100% { width: 100%; opacity: 1; }
+              }
+              .title-animate {
+                  background-size: 200% auto;
+                  animation: slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, text-shimmer 3s linear infinite;
+              }
               `}
           </style>
           {/* Container is rotated and scaled up to cover the corners */}
@@ -452,16 +474,27 @@ const Home: React.FC = () => {
             <BackgroundWallpaper />
             <div className="relative z-10 w-full max-w-5xl mx-auto space-y-8">
                 <header className="text-center space-y-4">
-                    <AppLogo className="w-32 h-32 md:w-40 md:h-40 mx-auto" />
-                    <h1 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-blue-light">
-                        โครงการ 5ส โรงเรียนเกาะสมุย
-                    </h1>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
+                    <div style={{ animation: 'float-logo 6s ease-in-out infinite' }}>
+                         <AppLogo className="w-32 h-32 md:w-40 md:h-40 mx-auto drop-shadow-2xl" />
+                    </div>
+                    
+                    <div className="relative inline-block px-4">
+                        <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0077C8] via-[#00BFFF] to-[#0077C8] title-animate drop-shadow-sm leading-tight py-2 tracking-tight">
+                            โครงการ 5ส โรงเรียนเกาะสมุย
+                        </h1>
+                        {/* Animated underline */}
+                        <div className="h-1.5 bg-gradient-to-r from-transparent via-brand-blue to-transparent mx-auto rounded-full mt-2" style={{ animation: 'underline-expand 1s ease-out forwards 0.5s', width: '0%', opacity: 0 }}></div>
+                    </div>
+                    
+                    <p className="text-gray-600 max-w-2xl mx-auto text-lg" style={{ animation: 'slide-up-fade 0.8s ease-out forwards 0.3s', opacity: 0 }}>
                         ส่งเสริมสภาพแวดล้อมที่สะอาด เป็นระเบียบ เอื้อต่อการเรียนรู้ และสร้างวินัยที่ดีให้แก่นักเรียน
                     </p>
-                    <Link to="/login" className="inline-block bg-brand-blue text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-brand-blue-light transition-transform transform hover:scale-105 shadow-lg">
-                        เข้าสู่ระบบ
-                    </Link>
+                    
+                    <div className="pt-4" style={{ animation: 'slide-up-fade 0.8s ease-out forwards 0.6s', opacity: 0 }}>
+                        <Link to="/login" className="inline-block bg-brand-blue text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-brand-blue-light transition-transform transform hover:scale-105 shadow-lg">
+                            เข้าสู่ระบบ
+                        </Link>
+                    </div>
                 </header>
 
                 <main className="space-y-8">
